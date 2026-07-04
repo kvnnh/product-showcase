@@ -1,15 +1,21 @@
+"use client";
+import { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
 import FavoriteButton from "../../components/FavoriteButton";
 
-export const dynamic = "force-dynamic";
+export default function ProductDetailPage() {
+  const { slug } = useParams();
+  const [product, setProduct] = useState(null);
 
-async function getProduct(id) {
-  const res = await fetch(`https://fakestoreapi.com/products/${id}`);
-  return res.json();
-}
+  useEffect(() => {
+    fetch(`https://fakestoreapi.com/products/${slug}`)
+      .then((res) => res.json())
+      .then((data) => setProduct(data));
+  }, [slug]);
 
-export default async function ProductDetailPage({ params }) {
-  const { slug } = await params;
-  const product = await getProduct(slug);
+  if (!product) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div className="flex flex-wrap gap-10 bg-white rounded-2xl p-8 shadow-sm">
