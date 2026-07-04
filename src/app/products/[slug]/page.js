@@ -1,5 +1,7 @@
 import FavoriteButton from "../../components/FavoriteButton";
 
+export const dynamic = "force-dynamic";
+
 async function getProduct(id) {
   const res = await fetch(`https://fakestoreapi.com/products/${id}`);
   return res.json();
