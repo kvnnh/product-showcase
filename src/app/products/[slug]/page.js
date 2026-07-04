@@ -19,7 +19,11 @@ export default function ProductDetailPage() {
 
   return (
     <div className="flex flex-wrap gap-10 bg-white rounded-2xl p-8 shadow-sm">
-      <img src={product.image} alt={product.title} className="max-w-xs object-contain mx-auto" />
+      <img
+          src={product.image}
+          alt={product.title}
+          className="w-full max-w-xs object-contain mx-auto"
+        />
       <div className="flex-1 min-w-[250px]">
         <span className="inline-block text-xs font-[family-name:var(--font-mono)] uppercase tracking-wide text-mint bg-mint/10 px-3 py-1 rounded-full mb-3">
           {product.category}
